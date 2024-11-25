@@ -38,7 +38,7 @@ B2: Build lại code và từ monitor cmd có được giá trị sau khi đo đ
 eg: I (363) pH TAG: Gia tri can luu lai la: 239999 
 
 B3: Lấy giá trị 239999  lưu vào biến nhớ  _pH_X_voltage (X là số) trong file mypH.c
-![alt text](mcu1/images/ph.png)
+![alt text](mcu1/images/pH.png)
 
 B4: Quay lại B1 đến khi calib xong 
 
@@ -57,7 +57,7 @@ B2: Build lại code và từ monitor cmd có được giá trị sau khi đo đ
 eg: I (363)  DO TAG: Gia tri can luu lai la: 239999 
 
 B3: Lấy giá trị 239999  lưu vào biến nhớ  DO_VX (X là số) trong file myDO.c
-![alt text](mcu1/images/do.png)
+![alt text](mcu1/images/DO.png)
 
 B4: Quay lại B1 đến khi calib xong 
 
@@ -69,7 +69,7 @@ B1: Build lại code và từ monitor cmd có được giá trị sau khi đo đ
 
 eg: I (363)  DO TAG: Gia tri can luu lai la: 239999 
 
-B2: Lấy giá trị 239999  lưu vào biến nhớ  EC_kvalueHigh trong file myDO.c
+B2: Lấy giá trị 239999  lưu vào biến nhớ  EC_kvalueHigh trong file myEC.c
 ![alt text](mcu1/images/ec.png)
 
 
