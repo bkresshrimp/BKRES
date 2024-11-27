@@ -106,16 +106,16 @@ void EC_calibrate(nvs_handle_t nvs_handle
 	(void)addr; 
     uint8_t t ;  
 	int32_t raw = 0;
-	int buf [4];
+	int buf [3];
 	
-    for (t=0;t<4;t++){
+    for (t=0;t<3;t++){
     // Read result
     if (ads111x_get_value(&devices[0], &raw) == ESP_OK)
     {
         float voltage = gain_val / ADS111X_MAX_VALUE * raw;
         printf("[%u] Raw ADC value: %ld, voltage: %.04f volts\n", 0, raw, voltage);
 		buf[t] = raw;
-		vTaskDelay(pdMS_TO_TICKS(200));
+		vTaskDelay(pdMS_TO_TICKS(500));
       
     }
     }
@@ -137,7 +137,7 @@ void EC_calibrate(nvs_handle_t nvs_handle
 	float voltage = convert_ADC_voltage(avgValue,ADC_resolution,ADC_Vref);
 	float KValueTemp = RES2 * ECREF * compECsolution / 1000.0 / voltage/10.0;
 	KValueTemp *= 1000.0;
-	ESP_LOGI(EC_TAG,"Gia tri can luu lai la: %d",(int)avgValue);
+	ESP_LOGI(EC_TAG,"Gia tri can luu lai la: %d",(int)KValueTemp);
 	printf("key:%s\n",key);
 	err = write_nvs_func(nvs_handle, space_name, key, (uint32_t)KValueTemp);
 	ESP_LOGI(EC_TAG,"%s",(err!= ESP_OK)?"Error in save to nvs!":"Calib success!");

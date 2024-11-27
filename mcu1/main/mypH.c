@@ -158,16 +158,16 @@ void pH_Calib( float ADC_VREF, float ADC_resolution
 	(void)addr; 
     uint8_t t ;  
 	int32_t raw = 0;
-	int buf [4];
+	int buf [3];
 	
-    for (t=0;t<4;t++){
+    for (t=0;t<3;t++){
   
     if (ads111x_get_value(&devices[0], &raw) == ESP_OK)
     {
         float voltage = gain_val / ADS111X_MAX_VALUE * raw;
         printf("[%u] Raw ADC value: %ld, voltage: %.04f volts\n", 0, raw, voltage);
 		buf[t] = raw;
-		vTaskDelay(pdMS_TO_TICKS(200));
+		vTaskDelay(pdMS_TO_TICKS(500));
     }
    
     }
