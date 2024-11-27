@@ -260,7 +260,7 @@ void ILI9341(void *pvParameters)
 		hieuEC = fabs(checkEC - databkres.EC);  
 		if(hieuEC == 0){
 		lcdDrawFillRect(&dev, 32, 32, 160, 64, BLACK);
-		sprintf((char *)asciiec, " %.2f mg/l",databkres.EC);
+		sprintf((char *)asciiec, " %.2f ppm",databkres.EC);
 		ArrowTest(&dev, fx16G, model, CONFIG_WIDTH, CONFIG_HEIGHT,asciiec,30,65 );
 		}
 		checkEC = 1000;
@@ -311,9 +311,9 @@ void task_get_data(void *arg){
 
 	gpio_set_level(EC_ON_PIN1, 1);
     databkres.EC = EC_get_value(26400.0,3300.0, 26.0);
-	printf("EC :%f \n",  databkres.EC);
+	databkres.EC = databkres.EC* 640.0;
+	printf("TDS :%f \n",  databkres.EC);
 	checkEC = databkres.EC;
-	vTaskDelay(2000/portTICK_PERIOD_MS);
     gpio_set_level(EC_ON_PIN1, 0);
 	vTaskDelay(2000/portTICK_PERIOD_MS);
 

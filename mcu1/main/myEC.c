@@ -189,7 +189,8 @@ float EC_get_value(float ADC_resolution, float v_ref, float temperature){
 	float value = (((voltage/RES2)/ECREF)*10.0);
 	value = value * (float)EC_kvalueHigh;
 	value = value/(1.0 + 0.0185*(temperature - 25.0));
-	value =value*1000.0;
-	value = 54879 * log(value)- 558626;
+    float tds =  value * 640.0;
+	printf("EC = %.2f ms/cm \n",value);
+	printf("TDS = %.2f ppm \n",tds);
 	return value;
 }
